@@ -22,7 +22,7 @@ class MyLocation extends Component {
   render() {
     const { city, loading, coords } = this.state;
     if (loading) {
-      return <div>getting location...</div>;
+      return <div>getting location..</div>;
     }
     return (
       <div>
