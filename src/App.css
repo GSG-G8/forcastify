@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400");
+@import url("http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css");
+
 html {
   font-size: 62.5%;
 }
@@ -6,7 +8,7 @@ html {
 .container {
   height: 100vh;
   width: 100vw;
-  background-image: url(https://images.unsplash.com/photo-1506190566487-2ea15fae2846?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=68e47766316ed9d9a7992cb57d107eac&auto=format&fit=crop&w=1868&q=80);
+  background-image: url(https://thewallpaper.co//wp-content/uploads/2016/10preview/free-weather-background-hd-wallpapers-windows-apple-amazing-4k-samsung-wallpapers-free-download-1920x1080.jpg);
   background-size: cover;
   background-position: center;
   display: -webkit-box;
@@ -168,3 +170,58 @@ html {
     border: none;
   }
 }
+.search{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+}
+
+.searchTerm {
+  color:black;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  border:2px solid white;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width:100%;
+  box-sizing: border-box;
+  outline:0;
+}
+
+.searchTerm:focus{
+  border: 2px solid #d33459;
+  border-radius: 5px;
+  line-height: 22px;
+  transition: all 0.3s;
+  color: rgb(95, 95, 95);
+
+
+}
+
+.searchButton {
+  position: absolute;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: 100px;
+  background:rgba(204, 102, 102, 0.952);
+  border:0;
+  cursor:pointer;
+  color:white;
+  font-size:24px;
+  padding-top:10px;
+  padding-bottom:14px;
+  transition: all 0.3s;
+  width:200px;
+  display:inline-block;
+  overflow: auto;
+  white-space: nowrap;
+  margin:0px auto;
+
+}
+.searchButton:hover {
+   background:#CC4949;
+   }
+
