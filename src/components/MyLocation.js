@@ -4,7 +4,6 @@ class MyLocation extends Component {
   state = {
     loading: true,
     city: '',
-    coords: '',
   };
 
   componentDidMount() {
@@ -14,21 +13,18 @@ class MyLocation extends Component {
         this.setState({
           loading: false,
           city: results.city,
-          coords: results.loc,
         })
       );
   }
 
   render() {
-    const { city, loading, coords } = this.state;
+    const { city, loading } = this.state;
     if (loading) {
       return <div>getting location..</div>;
     }
     return (
       <div>
-        <h1>This is your location</h1>
         <div>You live in : {city}</div>
-        <div>You coords is : {coords}</div>
       </div>
     );
   }
