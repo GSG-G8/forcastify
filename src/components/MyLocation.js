@@ -20,7 +20,7 @@ class MyLocation extends Component {
   render() {
     const { city, loading } = this.state;
     if (loading) {
-      return <div>getting location...</div>;
+      return <div>getting location..</div>;
     }
     return (
       <div>
