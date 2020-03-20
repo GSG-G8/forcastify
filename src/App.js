@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-// import MyLocation from './components/MyLocation';
+import MyLocation from './components/MyLocation';
+import Loading from './components/Loading';
+import Search from './components/Search';
+import performSearch from './components/performSearch';
+import handleErrors from './components/handleErorrs';
 
 class App extends Component {
   state = {
     loading: true,
     data: [],
+    search: '',
   };
 
   componentDidMount() {
@@ -20,31 +25,64 @@ class App extends Component {
       .then(data2 => this.setState({ data: data2, loading: false }));
   }
 
+  handleSearch = e => {
+    const { search } = this.state;
+    e.preventDefault();
+    performSearch(search)
+      .then(handleErrors)
+      .then(resData => {
+        this.setState({
+          data: resData,
+          loading: false,
+        });
+      })
+      .catch(err => console.log('not existed', err.message));
+  };
+
+  handleChange = e => {
+    this.setState({
+      search: e.target.value,
+    });
+  };
+
   render() {
     const { loading, data } = this.state;
     if (loading) {
-      return (
-        <div>
-          <h1>loading ... </h1>
-        </div>
-      );
+      return <Loading />;
     }
     if (data.length) {
-      return <h1>Data not found</h1>;
+      return (
+        <div>
+          <div className="container">
+            <div className="card">
+              <h1>Data not Found</h1>
+            </div>
+          </div>
+        </div>
+      );
     }
 
     const {
       data: { forecast: { forecastday } = {} },
     } = this.state;
+    // const forecastday = this.state.data.forecast.forecastday || {};
+    const { search } = this.state;
     return (
       <div>
-        <h1 style={{ textAlign: 'center' }}>Forcastify</h1>
         <div className="container">
           <div className="card">
+            <h1 style={{ textAlign: 'center' }}>FORECASTIFY</h1>
+            <MyLocation />
+            <Search
+              handleSearch={this.handleSearch}
+              handleChange={this.handleChange}
+              search={search}
+              placeholder="look for another city"
+            />
             <div className="today">
               <div className="conditions">
                 <div className="temp">
-                  <p>{forecastday[0].day.avgtemp_c} &deg; F</p>
+                  <p>{forecastday[0].day.avgtemp_c} &deg; C</p>
                 </div>
                 <div className="currentCond">
                   <p>
